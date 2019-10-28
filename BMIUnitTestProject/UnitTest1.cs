@@ -36,12 +36,5 @@ namespace BMIUnitTestProject
             Assert.AreEqual(bmi.BMICategory, BMICategory.Overweight);
         }
 
-        [TestMethod]
-        public void TestBMICategoryFail()
-        {
-            BMI bmi = new BMI() { WeightStones = 14, WeightPounds = 0, HeightFeet = 5, HeightInches = 10 };
-            Assert.AreEqual(bmi.BMICategory, BMICategory.Underweight);
-        }
-
     }
 }
