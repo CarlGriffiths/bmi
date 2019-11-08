@@ -6,10 +6,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
+
 namespace BMICalculator
- 
+
 {
-    
+
     public enum BMICategory { Underweight, Normal, Overweight, Obese };
 
     public class BMI
@@ -38,6 +39,25 @@ namespace BMICalculator
         [Range(0, 11, ErrorMessage = "Inches must be between 0 and 11")]                              // 12 inches in a foot
         public int HeightInches { get; set; }
 
+
+        //additional feature
+
+        //number of people overweight
+        public static int NumOverweight { get; set; } = 0;
+
+        //number of people underweight
+        public static int NumUnderWeight { get; set; } = 0;
+
+        //number of people obese
+        public static int NumObeseWeight { get; set; } = 0;
+
+        public BMICategory GetTheCat { get; set; }
+
+
+
+        //number of people obese
+        public static int NumNormalWeight { get; set; } = 0;
+
         // calculate BMI, display to 2 decimal places
         [Display(Name = "Your BMI is")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
@@ -57,6 +77,7 @@ namespace BMICalculator
                 double totalHeightInMetres = totalHeightInInches * InchestoMetres;
 
                 double bmi = totalWeightInKgs / (Math.Pow(totalHeightInMetres, 2));
+                System.Diagnostics.Debug.WriteLine("test");
 
                 return bmi;
             }
@@ -70,23 +91,82 @@ namespace BMICalculator
             {
                 double bmi = this.BMIValue;
 
+                System.Diagnostics.Debug.WriteLine("innnnnnnn");
+
+
                 // calculate BMI category based on upper limits
                 if (bmi <= UnderWeightUpperLimit)
                 {
+
+                    //NumUnderWeight = NumUnderWeight + 1;
+                    GetTheCat = BMICategory.Underweight;
                     return BMICategory.Underweight;
                 }
                 else if (bmi <= NormalWeightUpperLimit)
                 {
+                    //NumNormalWeight++;
+                    GetTheCat = BMICategory.Normal;
                     return BMICategory.Normal;
                 }
                 else if (bmi <= OverWeightUpperLimit)
                 {
+                    //NumOverweight++;
+                    GetTheCat = BMICategory.Overweight;
                     return BMICategory.Overweight;
                 }
                 else
                 {
+                    //NumObeseWeight++;
+                    GetTheCat = BMICategory.Obese;
                     return BMICategory.Obese;
                 }
+            }
+        }
+
+        [Display(Name = "Number of people with your bmi:")]
+        public int GetNumInCat
+        {
+            get
+            {
+                if (GetTheCat == BMICategory.Underweight)
+                {
+                    NumUnderWeight++;
+                    return NumUnderWeight;
+                }
+
+                else if (GetTheCat == BMICategory.Normal)
+                {
+                    NumNormalWeight++;
+                    return NumNormalWeight;
+                }
+
+                else if (GetTheCat == BMICategory.Overweight)
+                {
+                    NumOverweight++;
+                    return NumOverweight;
+                }
+                else
+                {
+                    NumObeseWeight++;
+                    return NumObeseWeight;
+                }
+
+            }
+
+
+        }
+        [Display(Name = "kk")]
+        public override string ToString()
+        {
+            return "Number of underweight = " + NumUnderWeight + "Number of normal = " + NumNormalWeight + "Number of overweight = " + NumOverweight + "Number of obese = " + NumObeseWeight;
+        }
+
+        public string FormattedBalance
+        {
+            get
+            {
+                return ToString();
+
             }
         }
     }
