@@ -4,9 +4,12 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BMICalculator
+ 
 {
+    
     public enum BMICategory { Underweight, Normal, Overweight, Obese };
 
     public class BMI
@@ -38,6 +41,8 @@ namespace BMICalculator
         // calculate BMI, display to 2 decimal places
         [Display(Name = "Your BMI is")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
+
+        [ExcludeFromCodeCoverage]
         public double BMIValue
         {
             get
