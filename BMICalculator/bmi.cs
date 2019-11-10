@@ -123,7 +123,7 @@ namespace BMICalculator
             }
         }
 
-        [Display(Name = "Number of people with your bmi:")]
+        
         public int GetNumInCat
         {
             get
@@ -155,20 +155,15 @@ namespace BMICalculator
 
 
         }
-        [Display(Name = "kk")]
-        public override string ToString()
-        {
-            return "Number of underweight = " + NumUnderWeight + "Number of normal = " + NumNormalWeight + "Number of overweight = " + NumOverweight + "Number of obese = " + NumObeseWeight;
-        }
+       
+        //public string getNumbers
+        //{
+         //   get
+         //   {
+         //       return "Number of underweight = " + NumUnderWeight + "Number of normal = " + NumNormalWeight + "Number of overweight = " + NumOverweight + "Number of obese = " + NumObeseWeight;
 
-        public string FormattedBalance
-        {
-            get
-            {
-                return ToString();
-
-            }
-        }
+         //   }
+        //}
     }
 }
 

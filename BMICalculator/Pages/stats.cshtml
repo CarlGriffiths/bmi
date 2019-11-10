@@ -1,0 +1,28 @@
+﻿@page
+@model BMICalculator.Pages.statsModel
+@{
+    ViewData["Title"] = "stats";
+}
+
+<h2>User stats</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Normal</th>
+            <th scope="col">Underweight</th>
+            <th scope="col">Overweight</th>
+            <th scope="col">Obese</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@BMI.NumNormalWeight</td>
+            <td>@BMI.NumUnderWeight</td>
+            <td>@BMI.NumOverweight</td>
+            <td>@BMI.NumObeseWeight</td>
+        </tr>
+    </tbody>
+</table>
+

@@ -48,6 +48,27 @@
             }
         </form>
 
+        @Html.DisplayFor(ModelItem => ModelItem.BMI.getNumbers)
+
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">Normal</th>
+                    <th scope="col">Underwight</th>
+                    <th scope="col">Overweight</th>
+                    <th scope="col">Obese</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@BMI.NumNormalWeight</td>
+                    <td>@BMI.NumUnderWeight</td>
+                    <td>@BMI.NumOverweight</td>
+                    <td>@BMI.NumObeseWeight</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
