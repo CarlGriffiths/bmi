@@ -91,43 +91,41 @@ namespace BMICalculator
             {
                 double bmi = this.BMIValue;
 
-                System.Diagnostics.Debug.WriteLine("innnnnnnn");
-
-
                 // calculate BMI category based on upper limits
                 if (bmi <= UnderWeightUpperLimit)
                 {
 
-                    //NumUnderWeight = NumUnderWeight + 1;
+                    NumUnderWeight = GetNumCat;
                     GetTheCat = BMICategory.Underweight;
                     return BMICategory.Underweight;
                 }
                 else if (bmi <= NormalWeightUpperLimit)
                 {
-                    //NumNormalWeight++;
+                    NumNormalWeight = GetNumCat;
                     GetTheCat = BMICategory.Normal;
                     return BMICategory.Normal;
                 }
                 else if (bmi <= OverWeightUpperLimit)
                 {
-                    //NumOverweight++;
+                    NumOverweight = GetNumCat;
                     GetTheCat = BMICategory.Overweight;
                     return BMICategory.Overweight;
                 }
                 else
                 {
-                    //NumObeseWeight++;
+                    NumObeseWeight = GetNumCat;
                     GetTheCat = BMICategory.Obese;
                     return BMICategory.Obese;
                 }
             }
         }
-
-        
-        public int GetNumInCat
+  
+        public int GetNumCat
         {
+
             get
             {
+
                 if (GetTheCat == BMICategory.Underweight)
                 {
                     NumUnderWeight++;
@@ -150,20 +148,12 @@ namespace BMICalculator
                     NumObeseWeight++;
                     return NumObeseWeight;
                 }
-
             }
-
+           
 
         }
        
-        //public string getNumbers
-        //{
-         //   get
-         //   {
-         //       return "Number of underweight = " + NumUnderWeight + "Number of normal = " + NumNormalWeight + "Number of overweight = " + NumOverweight + "Number of obese = " + NumObeseWeight;
 
-         //   }
-        //}
     }
 }
 
