@@ -38,3 +38,7 @@ steps:
     command: test
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+
+- task: PublishBuildArtifacts@1
