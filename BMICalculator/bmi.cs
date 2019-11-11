@@ -95,7 +95,7 @@ namespace BMICalculator
                 if (bmi <= UnderWeightUpperLimit)
                 {
 
-                    NumUnderWeight = GetNumCat;
+                    //int weight = GetNumCat;
                     GetTheCat = BMICategory.Underweight;
                     return BMICategory.Underweight;
                 }
@@ -122,7 +122,6 @@ namespace BMICalculator
   
         public int GetNumCat
         {
-
             get
             {
 
@@ -153,7 +152,6 @@ namespace BMICalculator
 
         }
        
-
     }
 }
 
