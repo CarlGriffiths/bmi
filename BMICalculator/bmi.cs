@@ -90,30 +90,29 @@ namespace BMICalculator
             get
             {
                 double bmi = this.BMIValue;
+                //int current = GetNumCat;
 
                 // calculate BMI category based on upper limits
                 if (bmi <= UnderWeightUpperLimit)
                 {
-
-                    //int weight = GetNumCat;
                     GetTheCat = BMICategory.Underweight;
                     return BMICategory.Underweight;
                 }
                 else if (bmi <= NormalWeightUpperLimit)
                 {
-                    NumNormalWeight = GetNumCat;
+                    
                     GetTheCat = BMICategory.Normal;
                     return BMICategory.Normal;
                 }
                 else if (bmi <= OverWeightUpperLimit)
                 {
-                    NumOverweight = GetNumCat;
+                   
                     GetTheCat = BMICategory.Overweight;
                     return BMICategory.Overweight;
                 }
                 else
                 {
-                    NumObeseWeight = GetNumCat;
+                   // NumObeseWeight = GetNumCat;
                     GetTheCat = BMICategory.Obese;
                     return BMICategory.Obese;
                 }
@@ -139,6 +138,7 @@ namespace BMICalculator
 
                 else if (GetTheCat == BMICategory.Overweight)
                 {
+                    
                     NumOverweight++;
                     return NumOverweight;
                 }

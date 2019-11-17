@@ -32,9 +32,33 @@ namespace BMIUnitTestProject
          [TestMethod]
         public void TestBMICategoryOverweight()
         {
+            
             BMI bmi = new BMI() { WeightStones = 14, WeightPounds = 0, HeightFeet = 5, HeightInches = 10 };
             Assert.AreEqual(bmi.BMICategory, BMICategory.Overweight);
+            
         }
-        
+
+        [TestMethod]
+        public void TestBMICategoryOverweightIncrease()
+        {
+            int beforeIncrease = BMI.NumOverweight;
+            BMI bmi = new BMI() { WeightStones = 14, WeightPounds = 0, HeightFeet = 5, HeightInches = 10 };
+
+            Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
+
+            Assert.AreEqual(beforeIncrease + 1, BMI.NumOverweight);
+        }
+
+        [TestMethod]
+        public void TestBMICategoryUnderweightIncrease()
+        {
+            int beforeIncrease = BMI.NumUnderWeight;
+            BMI bmi = new BMI() { WeightStones = 6, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
+            Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
+            
+            Assert.AreEqual(beforeIncrease + 1, BMI.NumUnderWeight);
+        }
+
+
     }
 }
