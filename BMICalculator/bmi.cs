@@ -19,6 +19,9 @@ namespace BMICalculator
         const double NormalWeightUpperLimit = 24.9;
         const double OverWeightUpperLimit = 29.9;               // Obese from 30 +
 
+        [Display(Name = "We advice you to:")]
+        public string Message {get; set;}
+
         // conversion factors from imperial to metric
         const double PoundsToKgs = 0.453592;
         const double InchestoMetres = 0.0254;
@@ -38,25 +41,6 @@ namespace BMICalculator
         [Display(Name = "Inches")]
         [Range(0, 11, ErrorMessage = "Inches must be between 0 and 11")]                              // 12 inches in a foot
         public int HeightInches { get; set; }
-
-
-        //additional feature
-
-        //number of people overweight
-        public static int NumOverweight { get; set; } = 0;
-
-        //number of people underweight
-        public static int NumUnderWeight { get; set; } = 0;
-
-        //number of people obese
-        public static int NumObeseWeight { get; set; } = 0;
-
-        public BMICategory GetTheCat { get; set; }
-
-
-
-        //number of people obese
-        public static int NumNormalWeight { get; set; } = 0;
 
         // calculate BMI, display to 2 decimal places
         [Display(Name = "Your BMI is")]
@@ -95,62 +79,31 @@ namespace BMICalculator
                 // calculate BMI category based on upper limits
                 if (bmi <= UnderWeightUpperLimit)
                 {
-                    GetTheCat = BMICategory.Underweight;
+                    Message = "gain weight";
                     return BMICategory.Underweight;
                 }
                 else if (bmi <= NormalWeightUpperLimit)
                 {
                     
-                    GetTheCat = BMICategory.Normal;
+                    Message = "you are fine";
                     return BMICategory.Normal;
                 }
                 else if (bmi <= OverWeightUpperLimit)
                 {
                    
-                    GetTheCat = BMICategory.Overweight;
+                    Message = "loose some weight";
                     return BMICategory.Overweight;
                 }
                 else
                 {
-                   // NumObeseWeight = GetNumCat;
-                    GetTheCat = BMICategory.Obese;
+                   // NumObeseWeight = GetNumCat
+                    Message = "loose some weight and contact a nutitionist";
                     return BMICategory.Obese;
                 }
             }
         }
   
-        public int GetNumCat
-        {
-            get
-            {
 
-                if (GetTheCat == BMICategory.Underweight)
-                {
-                    NumUnderWeight++;
-                    return NumUnderWeight;
-                }
-
-                else if (GetTheCat == BMICategory.Normal)
-                {
-                    NumNormalWeight++;
-                    return NumNormalWeight;
-                }
-
-                else if (GetTheCat == BMICategory.Overweight)
-                {
-                    
-                    NumOverweight++;
-                    return NumOverweight;
-                }
-                else
-                {
-                    NumObeseWeight++;
-                    return NumObeseWeight;
-                }
-            }
-           
-
-        }
        
     }
 }

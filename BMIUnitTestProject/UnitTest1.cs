@@ -2,12 +2,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using BMICalculator;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BMIUnitTestProject
 {
+    [ExcludeFromCodeCoverage]
+
     [TestClass]
     public class UnitTest1
     {
+   
         [TestMethod]
         public void TestBMICategoryNormal()
         {
@@ -39,25 +43,34 @@ namespace BMIUnitTestProject
         }
 
         [TestMethod]
-        public void TestBMICategoryOverweightIncrease()
+        public void TestBMIWeight()
         {
-            int beforeIncrease = BMI.NumOverweight;
-            BMI bmi = new BMI() { WeightStones = 14, WeightPounds = 0, HeightFeet = 5, HeightInches = 10 };
-
-            Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
-
-            Assert.AreEqual(beforeIncrease + 1, BMI.NumOverweight);
+            
+            BMI bmi = new BMI() { WeightStones = 6, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
+            //Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
+            Assert.AreEqual(bmi.WeightStones, 6);
+            Assert.AreEqual(bmi.WeightPounds, 0);
+        }
+        [TestMethod]
+        public void TestBMIHeight()
+        {
+            BMI bmi = new BMI() { WeightStones = 6, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
+            //Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
+            Assert.AreEqual(bmi.HeightFeet, 6);
+            Assert.AreEqual(bmi.HeightInches, 6);
         }
 
         [TestMethod]
-        public void TestBMICategoryUnderweightIncrease()
+        public void TestBMIMessage()
         {
-            int beforeIncrease = BMI.NumUnderWeight;
-            BMI bmi = new BMI() { WeightStones = 6, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
-            Assert.AreNotEqual(bmi.BMICategory, bmi.GetNumCat);
-            
-            Assert.AreEqual(beforeIncrease + 1, BMI.NumUnderWeight);
+            BMI bmi = new BMI() { WeightStones = 50, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
+            Assert.AreEqual(bmi.BMICategory, BMICategory.Obese);
+            Assert.AreEqual(bmi.Message, "loose some weight and contact a nutitionist");
+
+
         }
+
+
 
 
     }
