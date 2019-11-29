@@ -19,8 +19,15 @@ namespace BMICalculator
         const double NormalWeightUpperLimit = 24.9;
         const double OverWeightUpperLimit = 29.9;               // Obese from 30 +
 
+        //added feature
         [Display(Name = "We advice you to:")]
         public string Message {get; set;}
+        const string ObeseMessage = "Please consult a doctor";
+        const string UnderWeightMessage = "Gain weight";
+        const string NormalMessage = "You are fine";
+        const string OverWeightMessage = "Go to the gym";
+
+
 
         // conversion factors from imperial to metric
         const double PoundsToKgs = 0.453592;
@@ -79,25 +86,25 @@ namespace BMICalculator
                 // calculate BMI category based on upper limits
                 if (bmi <= UnderWeightUpperLimit)
                 {
-                    Message = "gain weight";
+                    Message = UnderWeightMessage;
                     return BMICategory.Underweight;
                 }
                 else if (bmi <= NormalWeightUpperLimit)
                 {
                     
-                    Message = "you are fine";
+                    Message = NormalMessage;
                     return BMICategory.Normal;
                 }
                 else if (bmi <= OverWeightUpperLimit)
                 {
                    
-                    Message = "loose some weight";
+                    Message = OverWeightMessage;
                     return BMICategory.Overweight;
                 }
                 else
                 {
                    // NumObeseWeight = GetNumCat
-                    Message = "loose some weight and contact a nutitionist";
+                    Message = ObeseMessage;
                     return BMICategory.Obese;
                 }
             }

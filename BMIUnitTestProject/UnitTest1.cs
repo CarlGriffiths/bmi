@@ -51,6 +51,8 @@ namespace BMIUnitTestProject
             Assert.AreEqual(bmi.WeightStones, 6);
             Assert.AreEqual(bmi.WeightPounds, 0);
         }
+
+     
         [TestMethod]
         public void TestBMIHeight()
         {
@@ -60,14 +62,14 @@ namespace BMIUnitTestProject
             Assert.AreEqual(bmi.HeightInches, 6);
         }
 
+
+        //added feature test
         [TestMethod]
         public void TestBMIMessage()
         {
             BMI bmi = new BMI() { WeightStones = 50, WeightPounds = 0, HeightFeet = 6, HeightInches = 6 };
             Assert.AreEqual(bmi.BMICategory, BMICategory.Obese);
-            Assert.AreEqual(bmi.Message, "loose some weight and contact a nutitionist");
-
-
+            Assert.AreEqual(bmi.Message, "Please consult a doctor");
         }
 
 
