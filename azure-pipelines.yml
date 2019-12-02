@@ -43,4 +43,13 @@ steps:
 
 - task: PublishBuildArtifacts@1
 
+
+- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+  displayName: 'Prepare analysis on SonarCloud'
+  inputs:
+    SonarCloud: 'bmi-test'
+    organization: carltesting
+    projectKey: 'bmi-test'
+    projectName: 'bmi-test'
+
 - task: SonarCloudAnalyze@1
